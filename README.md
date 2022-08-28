@@ -46,7 +46,7 @@ modules
 It is recommended to keep modules in their respective repositories for readability/discovery reasons.  
 **IMPORTANT: During the build process, tsconfig.json will ignore anything in the modules directory.** (this is to prevent errors during build-time with modules using different build techniques). To disable this feature, edit the tsconfig.json `exclude` rule.
 
-```json
+```jsonc
 //module.json
 {
     "name": "Module name", //[REQUIRED]
