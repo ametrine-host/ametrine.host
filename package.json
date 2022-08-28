@@ -1,0 +1,41 @@
+{
+  "name": "ametrine.host",
+  "version": "1.0.0",
+  "description": "An open-source billing panel alternative for hosting providers.",
+  "main": "./dist/index.js",
+  "scripts": {
+    "lint": "npx eslint src --ext .ts",
+    "build": "rm -rf dist&&mkdir dist && cp -r src/* dist&&echo '[ametrine] building'&&npx tsc -p .&&echo '[ametrine] cleaning'&&find dist -name '*.ts' -type f -delete",
+    "start": "pm2 start dist/index.js",
+    "nstart": "cd dist&&node index.js&&cd ..",
+    "move-main-website": "echo '[ametrine] moving main-website from dist to src'&&rm -rf src/modules/views/css &&mkdir src/modules/views/css &&cp -r dist/modules/views/css/* src/modules/views/css &&rm -rf src/modules/views/html &&mkdir src/modules/views/html &&cp -r dist/modules/views/html/* src/modules/views/html &&rm -rf src/modules/views/js &&mkdir src/modules/views/js &&cp -r dist/modules/views/js/* src/modules/views/js &&rm -rf src/modules/views/templates &&mkdir src/modules/views/templates &&cp -r dist/modules/views/templates/* src/modules/views/templates",
+    "ls": "npm run build && npm run nstart",
+    "clean": "rm -rf dist&&mkdir dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ametrine-host/ametrine.host.git"
+  },
+  "author": "Ametrine",
+  "license": "GPLv3",
+  "bugs": {
+    "url": "https://github.com/ametrine-host/ametrine.host/issues"
+  },
+  "homepage": "https://github.com/ametrine-host/ametrine.host#readme",
+  "devDependencies": {
+    "@swc/cli": "^0.1.57",
+    "@swc/core": "^1.2.244",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/node": "^17.0.45",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.27.0",
+    "eslint": "^8.15.0",
+    "typescript": "^4.7.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "vite": "^3.0.9"
+  }
+}
